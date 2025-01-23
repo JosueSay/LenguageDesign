@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MPSProject">
+    <projectModules>
+      <modulePath path="$PROJECT_DIR$/languages/desing_shapes.sandbox/desing_shapes.sandbox.msd" folder="" />
+      <modulePath path="$PROJECT_DIR$/languages/desing_shapes/desing_shapes.mpl" folder="" />
+    </projectModules>
+  </component>
+</project>
