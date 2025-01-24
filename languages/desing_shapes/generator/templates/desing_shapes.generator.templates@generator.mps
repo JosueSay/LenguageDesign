@@ -898,7 +898,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="7yDxuiBCSb9" role="2OqNvi">
-                  <ref role="37wK5l" to="z60i:~Graphics.drawOval(int,int,int,int)" resolve="drawOval" />
+                  <ref role="37wK5l" to="z60i:~Graphics.drawRect(int,int,int,int)" resolve="drawRect" />
                   <node concept="3cmrfG" id="7yDxuiBCScM" role="37wK5m">
                     <property role="3cmrfH" value="10" />
                     <node concept="17Uvod" id="7yDxuiBCT2z" role="lGtFl">
