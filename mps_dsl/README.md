@@ -1,6 +1,6 @@
-# Diseño de DSL con JetBrains MPS
+# Diseño de DSL con JetBrains MPS 💡
 
-## Instrucciones
+## 📜 Instrucciones
 
 - Clonar el repositorio [**Repositorio**](https://github.com/JosueSay/LenguageDesign)  
 - Abrir **JetBrains MPS**.  
@@ -15,7 +15,7 @@
 
   ![Ejecutar Proyecto](./images/ejecutar_proyecto.png)  
 
-### Resultado 🖼️  
+### Resultado
 
 Se abrirá un lienzo mostrando un dibujo de una cara compuesta por:
 
@@ -23,10 +23,10 @@ Se abrirá un lienzo mostrando un dibujo de una cara compuesta por:
 - **1 triángulo**  
 - **4 cuadrados**  
 
-📸 **Ejemplo del dibujo:**  
+**Ejemplo del dibujo:**  
 ![Ejecución Proyecto](./images/ejecucion_proyecto.png)  
 
-## ✏️ Edición de Formas  
+## ✏️ Edición de Formas
 
 Puedes editar el dibujo haciendo doble clic en **"MyDrawing"** en la carpeta `design_shapes.sandbox`.  
 
