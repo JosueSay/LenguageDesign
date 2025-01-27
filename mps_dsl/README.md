@@ -54,4 +54,4 @@ Puedes editar el dibujo haciendo doble clic en **"MyDrawing"** en la carpeta `de
 
 ### Explicación
 
-[Enlace a explicativo en YouTube]()
+[Enlace a explicativo en YouTube](https://youtu.be/g3ZbE7eq4qw)
