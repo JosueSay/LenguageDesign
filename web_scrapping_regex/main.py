@@ -16,6 +16,37 @@ def limpiarData(limpiarDatos, data):
     return cleaned_products
   else:
     return data
+
+# Identificar el par de datos (NOMBRE PRODUCTO, URL IMAGEN) del archivo HTML
+def identifyPairData(data_html):
+  
+  # Banderas para ver resultados
+  ver_imagenes = True
+  ver_productos = True
+  limpiar_data = True
+  ver_data = False
+  
+  # Buscar los nombres de los productos por regex
+  if ver_productos:
+    name_products = re.findall(regex_name_product, data_html, re.DOTALL)
+    name_products = limpiarData(limpiarDatos=limpiar_data, data=name_products)
+  
+  if ver_data:
+    print("Hay", len(name_products), "productos:")
+    # print(name_products)
+    [print(nProduct) for nProduct in name_products]
+    print()
+    print("Hay", len(url_images), "imágenes:")
+    # print(url_images)
+    [print(url) for url in url_images]
+  
+  # Buscar las url de imagenes por regex
+  if ver_imagenes:
+    # Imágenes
+    url_images = re.findall(regex_url_image, data_html)
+  
+  if ver_productos and ver_imagenes:
+    return name_products, url_images
   
 def cargarHTML(name_file):
   
@@ -26,34 +57,10 @@ def cargarHTML(name_file):
       
       soup = BeautifulSoup(file, "html.parser")
       html_content = soup.prettify()
+      # print(html_content)  # Muestra el HTML
       
-      # Banderas para ver resultados
-      ver_imagenes = True
-      ver_productos = True
-      limpiar_data = True
+      productos, url_images = identifyPairData(html_content)
       
-      # Buscar los nombres de los productos por regex
-      if ver_productos:
-        name_products = re.findall(regex_name_product, html_content, re.DOTALL)
-        name_products = limpiarData(limpiarDatos=limpiar_data, data=name_products)
-        print("Hay", len(name_products), "productos:")
-        # print(name_products)
-        [print(nProduct) for nProduct in name_products]
-      
-      print()
-      
-      # Buscar las url de imagenes por regex
-      if ver_imagenes:
-        # Imágenes
-        url_images = re.findall(regex_url_image, html_content)
-        print("Hay", len(url_images), "imágenes:")
-        # print(url_images)
-        [print(url) for url in url_images]
-        
-        
-      if ver_imagenes * ver_productos == 1:
-        return zip(name_products, url_images)
-      
-  # print(soup.prettify())  # Muestra el HTML con formato
+      print((len(productos), len(url_images)))
 
 cargarHTML(name_file=name_file)
