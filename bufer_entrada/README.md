@@ -11,15 +11,17 @@ Se simuló un pequeño buffer en Python utilizando centinelas "eof" para identif
 
 1. **Clonar el repositorio**:
 
-   ```bash
-   git clone https://github.com/JosueSay/LenguageDesign.git
-   ```
+   1.1 HTTPS:
 
-   o
-  
-   ```bash
-   git clone git@github.com:JosueSay/LenguageDesign.git
-   ```
+    ```bash
+    git clone https://github.com/JosueSay/LenguageDesign
+    ```
+
+   1.2 SSH:
+
+    ```bash
+    git clone git@github.com:JosueSay/LenguageDesign.git
+    ```
 
 2. **Navegar a la carpeta `bufer_entrada`**:
 

@@ -9,7 +9,19 @@ Esta actividad se realizó utilizando la aplicación **JetBrains MPS** para crea
 
 ## 📜 Instrucciones
 
-- Clonar el repositorio [**Repositorio**](https://github.com/JosueSay/LenguageDesign)  
+- Clonar el repositorio:
+  - HTTPS:
+
+    ```bash
+    git clone https://github.com/JosueSay/LenguageDesign
+    ```
+
+  - SSH:
+
+    ```bash
+    git clone git@github.com:JosueSay/LenguageDesign.git
+    ```
+
 - Abrir **JetBrains MPS**.  
 - Crear un nuevo proyecto y abrir la carpeta `mps_dsl` del repositorio clonado.  
 
