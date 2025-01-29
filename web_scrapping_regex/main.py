@@ -17,8 +17,8 @@ def limpiarData(limpiarDatos, data):
   else:
     return data
 
-# Identificar el par de datos (NOMBRE PRODUCTO, URL IMAGEN) del archivo HTML
-def identifyPairData(data_html):
+# Identificar el par de datos (NOMBRE PRODUCTO, URL IMAGEN) del archivo HTML con re
+def identifyPairDataRe(data_html):
   
   # Banderas para ver resultados
   ver_imagenes = True
@@ -47,7 +47,13 @@ def identifyPairData(data_html):
   
   if ver_productos and ver_imagenes:
     return name_products, url_images
+
+# Identificar el par de datos (NOMBRE PRODUCTO, URL IMAGEN) del archivo HTML con buffer
+def identifyPairDataRe(data_html):
   
+  return 0
+
+
 def cargarHTML(name_file):
   
   file_path = f"./src/{name_file}"
@@ -59,7 +65,7 @@ def cargarHTML(name_file):
       html_content = soup.prettify()
       # print(html_content)  # Muestra el HTML
       
-      productos, url_images = identifyPairData(html_content)
+      productos, url_images = identifyPairDataRe(html_content)
       
       print((len(productos), len(url_images)))
 
