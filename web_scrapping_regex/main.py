@@ -25,6 +25,8 @@ def identifyPairDataRe(data_html):
   ver_productos = True
   limpiar_data = True
   ver_data = False
+
+  entrada_html = list(data_html)
   
   # Buscar los nombres de los productos por regex
   if ver_productos:
@@ -56,7 +58,7 @@ def identifyPairDataRe(data_html):
 
 def cargarHTML(name_file):
   
-  file_path = f"./src/{name_file}"
+  file_path = f"web_scrapping_regex\src\\video_games_max.html"
 
   # Abrir el archivo y crear un objeto soup
   with open(file_path, "r", encoding="utf-8") as file:
