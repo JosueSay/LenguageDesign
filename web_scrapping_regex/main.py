@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import re
+from buffer import procesar_buffer
 
 # Variables utilizadas para scrapping
 name_file = "video_games_max.html"
@@ -63,10 +64,13 @@ def cargarHTML(name_file):
       
       soup = BeautifulSoup(file, "html.parser")
       html_content = soup.prettify()
+      
+      procesar_buffer(html_content, 0, 10)
+      
       # print(html_content)  # Muestra el HTML
       
-      productos, url_images = identifyPairDataRe(html_content)
+      # productos, url_images = identifyPairDataRe(html_content)
       
-      print((len(productos), len(url_images)))
+      # print((len(productos), len(url_images)))
 
 cargarHTML(name_file=name_file)
