@@ -4,8 +4,8 @@ Se simuló un pequeño buffer en Python utilizando centinelas "eof" para identif
 
 ## 🐍 Entorno
 
-- Python
-- Versión: 3.12.3
+- **Lenguaje:** Python
+- **Versión:** 3.12.3
 
 ## 📜 Instrucciones
 
