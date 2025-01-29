@@ -57,7 +57,7 @@ a otra cadena, como por ejemplo:
 entrada = list("Esto es otro ejemplo")
 ```
 
-## Multimedia 🎥
+## 🎥 Multimedia
 
 ### Demostración
 

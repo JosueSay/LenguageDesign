@@ -46,7 +46,7 @@ Puedes editar el dibujo haciendo doble clic en **"MyDrawing"** en la carpeta `de
 
   ![Edición de Colores](./images/demostracion.gif)
 
-## Multimedia 🎥
+## 🎥 Multimedia
 
 ### Demostración
 
