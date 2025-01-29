@@ -1,19 +1,19 @@
-# Código base para iniciar
-
 class Buffer():
-   def __init__(self ,entrada, inicio, tamano_buffer):
-      self.entrada=entrada
-      self.inicio = inicio
-      self.tamano_buffer = tamano_buffer
-      self.lexemas = []
-   def cargar_buffer(self, entrada, inicio, tamano_buffer):
+  def __init__(self ,entrada, inicio, tamano_buffer):
+    self.entrada=entrada
+    self.inicio = inicio
+    self.tamano_buffer = tamano_buffer
+    self.lexemas = []
+      
+  # Crear buffer y llenarlos
+  def cargar_buffer(self, entrada, inicio, tamano_buffer):
     buffer = list(entrada[inicio:inicio + tamano_buffer])
     if len(buffer) < tamano_buffer:
       buffer.append("eof")
     return buffer
 
-# Procesar y extraer lexemas del buffer
-   def procesar_buffer(self, entrada, inicio, tamano_buffer):
+  # Procesar y extraer lexemas del buffer
+  def procesar_buffer(self, entrada, inicio, tamano_buffer):
     
     flag_final = "eof"
     flag_proceso = True
@@ -51,16 +51,15 @@ class Buffer():
 
       avance += 1
 
-   def execute(self):
+  def execute(self):
     self.procesar_buffer(self.entrada,self.inicio, self.tamano_buffer)
 
 if __name__ == "__main__":
-    texto = """Línea 1
-               Línea 2
-               Línea 3"""
-    tamano_buffer = 10
-    entrada = list(texto)
-    inicio = 0
-    buffer = Buffer(entrada=entrada, inicio=inicio, tamano_buffer=tamano_buffer)
-    buffer.execute()
-    print(buffer.lexemas)
+  texto = "Esto es un ejemplo"
+  tamano_buffer = 10
+  entrada = list(texto)
+  inicio = 0
+    
+  buffer = Buffer(entrada=entrada, inicio=inicio, tamano_buffer=tamano_buffer)
+  buffer.execute()
+  print(buffer.lexemas)
