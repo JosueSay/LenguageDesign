@@ -5,7 +5,7 @@ from buffer import Buffer
 # Variables utilizadas para scrapping
 name_file = "video_games_max.html"
 url_images = 'https://backoffice.max.com.gt/media/catalog/product/'
-regex_name_product = r'title="([^"]+)"'
+regex_name_product = r'<a class="relative flex w-full justify-center"[^>]*>\s*<img alt="([^"]+)"'
 regex_url_image = rf'({re.escape(url_images)}[^"]+\.(?:jpg|png|jpeg))'
 
 # Limpiar los nombres: eliminar saltos de línea, espacios innecesarios y decodificar HTML
@@ -62,21 +62,21 @@ def identifyPairData(data_html):
   lexemas = buffer.lexemas
   pila_contenido_imagen = []
   contenido = ""
-  FLAG_DETECCION = False
+  FLAG_DETECCION = True
 
   for lex in lexemas:
     contenido += " " +lex
     if FLAG_DETECCION:
       nombres = re.findall(regex_name_product, contenido)
       if len(nombres) > 0:
-        print("Contenido:", contenido, "\nEncontre con contenido anterior: ", nombres[-1])
+        # print("Contenido:", contenido, "\nEncontre con contenido anterior: ", nombres[-1])
         pila_contenido_imagen, FLAG_DETECCION = detectarTipoContenido(flag=FLAG_DETECCION, pila=pila_contenido_imagen, data=nombres)
         contenido = ""
       
     elif not FLAG_DETECCION:
       imagenes = re.findall(regex_url_image, contenido)
       if len(imagenes) > 0:
-        print("\nContenido:", contenido, "\nEncontre con contenido anterior: ", imagenes[-1])
+        # print("\nContenido:", contenido, "\nEncontre con contenido anterior: ", imagenes[-1])
         pila_contenido_imagen, FLAG_DETECCION = detectarTipoContenido(flag=FLAG_DETECCION, pila=pila_contenido_imagen, data=imagenes)
         contenido = ""
           
@@ -93,8 +93,6 @@ def cargarHTML(name_file):
     html_content = soup.prettify()
     # print(html_content)
     data = identifyPairData(html_content)
-    print("\n", data)
-    data.pop()
     
     if len(data) % 2 == 0: 
         name_products = [data[i] for i in range(len(data)) if i % 2 == 0]
