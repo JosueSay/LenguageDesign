@@ -1,5 +1,12 @@
 # Diseño de DSL con JetBrains MPS 💡
 
+Esta actividad se realizó utilizando la aplicación **JetBrains MPS** para crear un **DSL** (Lenguaje Específico de Dominio) de figuras geométricas (círculo, cuadrado y triángulo). Se emplearon conceptos y generadores para definir los atributos y comportamientos de cada figura, minimizando casi por completo el uso de lenguaje **Java**.
+
+## 💻 Entorno
+
+- **Aplicación**: JetBrains MPS
+- **Versión**: 2024.3
+
 ## 📜 Instrucciones
 
 - Clonar el repositorio [**Repositorio**](https://github.com/JosueSay/LenguageDesign)  

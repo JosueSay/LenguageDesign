@@ -2,7 +2,7 @@
 
 Se simuló un pequeño buffer en Python utilizando centinelas "eof" para identificar el final de los datos. Se recorren los datos con los punteros "inicioLexema" y "avance" en un buffer de tamaño 10 caracteres, recargando los datos para el siguiente buffer y tomando en cuenta los ya leídos.
 
-## 🐍 Lenguaje
+## 🐍 Entorno
 
 - Python
 - Versión: 3.12.3
