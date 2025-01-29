@@ -31,6 +31,14 @@ def identifyPairDataRe(data_html):
     name_products = re.findall(regex_name_product, data_html, re.DOTALL)
     name_products = limpiarData(limpiarDatos=limpiar_data, data=name_products)
   
+  # Buscar las url de imagenes por regex
+  if ver_imagenes:
+    # Imágenes
+    url_images = re.findall(regex_url_image, data_html)
+  
+  if ver_productos and ver_imagenes:
+    return name_products, url_images
+  
   if ver_data:
     print("Hay", len(name_products), "productos:")
     # print(name_products)
@@ -39,19 +47,11 @@ def identifyPairDataRe(data_html):
     print("Hay", len(url_images), "imágenes:")
     # print(url_images)
     [print(url) for url in url_images]
-  
-  # Buscar las url de imagenes por regex
-  if ver_imagenes:
-    # Imágenes
-    url_images = re.findall(regex_url_image, data_html)
-  
-  if ver_productos and ver_imagenes:
-    return name_products, url_images
 
 # Identificar el par de datos (NOMBRE PRODUCTO, URL IMAGEN) del archivo HTML con buffer
-def identifyPairDataRe(data_html):
+# def identifyPairDataRe(data_html):
   
-  return 0
+#   return 0
 
 
 def cargarHTML(name_file):
