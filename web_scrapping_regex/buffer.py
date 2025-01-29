@@ -16,7 +16,7 @@ def procesar_buffer(entrada, inicio, tamano_buffer):
   avance = 0
   lexema = ""
   # Definir caracteres a ignorar como "ws" (whitespace)
-  ws_tokens = {" ", "\n", "\t", "\r"}
+  ws_tokens = {" ", "\n", "\t"}
   
   while flag_proceso:
     # Cargar nuevo buffer si es necesario
