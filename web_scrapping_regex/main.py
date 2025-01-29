@@ -1,5 +1,8 @@
 from bs4 import BeautifulSoup
 import re
+from buffer import Buffer
+
+
 
 # Variables utilizadas para scrapping
 name_file = "video_games_max.html"
@@ -27,6 +30,39 @@ def identifyPairDataRe(data_html):
   ver_data = False
 
   entrada_html = list(data_html)
+  tamano_buffer = 10
+  inicio = 0
+  buffer = Buffer(entrada=entrada_html, inicio=inicio, tamano_buffer=tamano_buffer)
+  buffer.execute()
+  lexemas = buffer.lexemas
+  pila_contenido_imagen = []
+  contenido = ""
+  FLAG_DETECCION = 0 #inicia leyendo titulos
+
+  for lex in lexemas:
+    contenido += " " +lex
+    if FLAG_DETECCION == 0:
+      nombres = re.findall(regex_name_product, contenido)
+      if len(nombres) >0:
+        pila_contenido_imagen.append(nombres[0])
+        contenido = ""
+        FLAG_DETECCION = 1
+    elif FLAG_DETECCION == 1:
+      imagenes = re.findall(regex_url_image, contenido)
+      if len(imagenes) >0:
+        pila_contenido_imagen.append(imagenes[0])
+        contenido = ""
+        FLAG_DETECCION = 0
+  print(pila_contenido_imagen)
+  print(len(pila_contenido_imagen))
+
+  
+      
+
+
+
+
+
   
   # Buscar los nombres de los productos por regex
   if ver_productos:
@@ -65,10 +101,23 @@ def cargarHTML(name_file):
       
       soup = BeautifulSoup(file, "html.parser")
       html_content = soup.prettify()
+      
+      #procesar_buffer(html_content, 0, 10)
+      
       # print(html_content)  # Muestra el HTML
+
+      texto_html = """
+    <a
+        class="title-wrap text-xs font-normal text-max-black-900 hover:underline md:text-sm"
+        id="product-info-section-title-PS5STDBUNGAME2"
+        data-testid="product-info-section-title-PS5STDBUNGAME2-test"
+        href="/consola-playstation-5-slim-ratchet-clank-rift-apart-y-returnal-sony-ps5stdbungame2"
+        >Consola PlayStation 5 Slim: Ratchet &amp;
+        Clank: Rift Apart y Returnal</a>
+    """
       
-      productos, url_images = identifyPairDataRe(html_content)
+      identifyPairDataRe(html_content)
       
-      print((len(productos), len(url_images)))
+      # print((len(productos), len(url_images)))
 
 cargarHTML(name_file=name_file)
