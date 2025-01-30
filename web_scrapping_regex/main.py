@@ -110,11 +110,7 @@ def cargarHTML(name_file):
         # Limpiamos la data de nombre para eliminar caracteres que se interpretaron mal en el proceso de scrapping
         name_products_clean = [item.replace("&amp;", "&") for item in name_products]
         convertir_a_csv(name_products_clean, url_images)
-
-        # Imprimir en formato "nombre producto - url"
-        for name, url in zip(name_products_clean, url_images):
-            # print(f"{name} - {url}")
-            print("Los productos se han guardado en la carpeta 'data'.")
+        print("Los productos se han guardado en la carpeta 'data'.")
     else:
         print("La cantidad de datos no es par, revisa la estructura de 'data'.")
 
