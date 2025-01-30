@@ -61,7 +61,7 @@ def identifyPairData(data_html):
   buffer = Buffer(entrada=data_html, inicio=0, tamano_buffer=10)
   buffer.execute()
   lexemas = buffer.lexemas
-  pila_contenido_imagen = []
+  pila_contenido = []
   contenido = ""
   FLAG_DETECCION = True
 
@@ -71,17 +71,17 @@ def identifyPairData(data_html):
       nombres = re.findall(regex_name_product, contenido)
       if len(nombres) > 0:
         # print("Contenido:", contenido, "\nEncontre con contenido anterior: ", nombres[-1])
-        pila_contenido_imagen, FLAG_DETECCION = detectarTipoContenido(flag=FLAG_DETECCION, pila=pila_contenido_imagen, data=nombres)
+        pila_contenido, FLAG_DETECCION = detectarTipoContenido(flag=FLAG_DETECCION, pila=pila_contenido, data=nombres)
         contenido = ""
       
     elif not FLAG_DETECCION:
       imagenes = re.findall(regex_url_image, contenido)
       if len(imagenes) > 0:
         # print("\nContenido:", contenido, "\nEncontre con contenido anterior: ", imagenes[-1])
-        pila_contenido_imagen, FLAG_DETECCION = detectarTipoContenido(flag=FLAG_DETECCION, pila=pila_contenido_imagen, data=imagenes)
+        pila_contenido, FLAG_DETECCION = detectarTipoContenido(flag=FLAG_DETECCION, pila=pila_contenido, data=imagenes)
         contenido = ""
           
-  return pila_contenido_imagen
+  return pila_contenido
 
 def convertir_a_csv(productos, url):
   data = {
