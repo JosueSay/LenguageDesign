@@ -97,9 +97,12 @@ def cargarHTML(name_file):
     if len(data) % 2 == 0: 
         name_products = [data[i] for i in range(len(data)) if i % 2 == 0]
         url_images = [data[i] for i in range(len(data)) if i % 2 != 0]
+        
+        # Limpiamos la data de nombre para eliminar caracteres que se interpretaron mal en el proceso de scrapping
+        name_products_clean = [item.replace("&amp;", "&") for item in name_products]
 
         # Imprimir en formato "nombre producto - url"
-        for name, url in zip(name_products, url_images):
+        for name, url in zip(name_products_clean, url_images):
             print(f"{name} - {url}")
     else:
         print("La cantidad de datos no es par, revisa la estructura de 'data'.")
