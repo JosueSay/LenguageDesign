@@ -89,7 +89,7 @@ def convertir_a_csv(productos, url):
     "Imagenes": url
   }
   df = pd.DataFrame(data)
-  df.to_csv("Listado_productos.csv", index = False)
+  df.to_csv("./data/Listado_productos.csv", index = False)
 
 def cargarHTML(name_file):
   
@@ -113,7 +113,8 @@ def cargarHTML(name_file):
 
         # Imprimir en formato "nombre producto - url"
         for name, url in zip(name_products_clean, url_images):
-            print(f"{name} - {url}")
+            # print(f"{name} - {url}")
+            print("Los productos se han guardado en la carpeta 'data'.")
     else:
         print("La cantidad de datos no es par, revisa la estructura de 'data'.")
 
