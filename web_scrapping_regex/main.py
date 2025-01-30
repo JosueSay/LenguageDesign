@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import re
 from buffer import Buffer
+import pandas as pd
 
 # Variables utilizadas para scrapping
 name_file = "video_games_max.html"
@@ -82,6 +83,14 @@ def identifyPairData(data_html):
           
   return pila_contenido_imagen
 
+def convertir_a_csv(productos, url):
+  data = {
+    "Productos": productos,
+    "Imagenes": url
+  }
+  df = pd.DataFrame(data)
+  df.to_csv("Listado_productos.csv", index = False)
+
 def cargarHTML(name_file):
   
   file_path = f"./src/{name_file}"
@@ -100,11 +109,13 @@ def cargarHTML(name_file):
         
         # Limpiamos la data de nombre para eliminar caracteres que se interpretaron mal en el proceso de scrapping
         name_products_clean = [item.replace("&amp;", "&") for item in name_products]
+        convertir_a_csv(name_products_clean, url_images)
 
         # Imprimir en formato "nombre producto - url"
         for name, url in zip(name_products_clean, url_images):
             print(f"{name} - {url}")
     else:
         print("La cantidad de datos no es par, revisa la estructura de 'data'.")
+
 
 cargarHTML(name_file=name_file)
