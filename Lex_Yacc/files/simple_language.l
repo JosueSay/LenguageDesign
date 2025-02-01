@@ -15,7 +15,8 @@
 "="                     { return '='; }
 ":"                     { return ':'; }
 [ \t]                   ;  // skip whitespace
-.|\n                    ; /* ignore all the rest */
+						// Si el token es invalido, lo devuelve con un mensaje
+.|\n                    { printf("Error: Token inválido -> %s\n", yytext); }
 
 %%
 

@@ -31,7 +31,7 @@ statement: assignment
     | expression ':'          { std::cout << $1 << std::endl; }
     ;
 
-assignment: ID '=' expression
+assignment: ID '=' expression ':'
     { 
         printf("Assign %s = %d\n", $1->c_str(), $3); 
         $$ = vars[*$1] = $3; 
