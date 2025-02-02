@@ -55,7 +55,8 @@ extern int yydebug;
     YYerror = 256,                 /* error  */
     YYUNDEF = 257,                 /* "invalid token"  */
     NUMBER = 258,                  /* NUMBER  */
-    ID = 259                       /* ID  */
+    ID = 259,                      /* ID  */
+    print = 260                    /* print  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -67,7 +68,7 @@ union YYSTYPE
 #line 10 "simple_language.y"
  int num; std::string *str; 
 
-#line 71 "y.tab.h"
+#line 72 "y.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

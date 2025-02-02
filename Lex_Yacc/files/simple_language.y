@@ -11,12 +11,15 @@ int yylex();
 
 %token<num> NUMBER
 %token<str> ID
+%token print
 %type<num> expression
 %type<num> assignment
 
 %right '='
 %left '+' '-'
 %left '*' '/'
+
+
 
 %%
 
@@ -39,14 +42,22 @@ assignment: ID '=' expression ':'
     }
     ;
 
-expression: NUMBER                  { $$ = $1; }
-    | ID                            { $$ = vars[*$1];      delete $1; }
-    | expression '+' expression     { $$ = $1 + $3; }
-    | expression '-' expression     { $$ = $1 - $3; }
-    | expression '*' expression     { $$ = $1 * $3; }
-    | expression '/' expression     { $$ = $1 / $3; }
+expression:
+    NUMBER                  { printf("NUM(%d)\n", $1); $$ = $1; }
+    | ID                    { $$ = vars[*$1]; printf("VAR(%s = %d)\n", $1->c_str(), $$); delete $1; }
+    | expression '+' expression  { printf("(+ %d %d)\n", $1, $3); $$ = $1 + $3; }
+    | expression '-' expression  { printf("(- %d %d)\n", $1, $3); $$ = $1 - $3; }
+    | expression '*' expression  { printf("(* %d %d)\n", $1, $3); $$ = $1 * $3; }
+    | expression '/' expression  { 
+        if ($3 == 0) {
+            yyerror("Error: División por cero");
+            $$ = 0;
+        } else {
+            printf("(/ %d %d)\n", $1, $3);
+            $$ = $1 / $3;
+        }
+    }
     ;
-
 %%
 
 int main() {

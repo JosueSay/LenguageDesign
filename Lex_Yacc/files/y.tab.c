@@ -121,7 +121,8 @@ extern int yydebug;
     YYerror = 256,                 /* error  */
     YYUNDEF = 257,                 /* "invalid token"  */
     NUMBER = 258,                  /* NUMBER  */
-    ID = 259                       /* ID  */
+    ID = 259,                      /* ID  */
+    print = 260                    /* print  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -133,7 +134,7 @@ union YYSTYPE
 #line 10 "simple_language.y"
  int num; std::string *str; 
 
-#line 137 "y.tab.c"
+#line 138 "y.tab.c"
 
 };
 typedef union YYSTYPE YYSTYPE;
@@ -158,18 +159,19 @@ enum yysymbol_kind_t
   YYSYMBOL_YYUNDEF = 2,                    /* "invalid token"  */
   YYSYMBOL_NUMBER = 3,                     /* NUMBER  */
   YYSYMBOL_ID = 4,                         /* ID  */
-  YYSYMBOL_5_ = 5,                         /* '='  */
-  YYSYMBOL_6_ = 6,                         /* '+'  */
-  YYSYMBOL_7_ = 7,                         /* '-'  */
-  YYSYMBOL_8_ = 8,                         /* '*'  */
-  YYSYMBOL_9_ = 9,                         /* '/'  */
-  YYSYMBOL_10_ = 10,                       /* ':'  */
-  YYSYMBOL_YYACCEPT = 11,                  /* $accept  */
-  YYSYMBOL_program = 12,                   /* program  */
-  YYSYMBOL_statement_list = 13,            /* statement_list  */
-  YYSYMBOL_statement = 14,                 /* statement  */
-  YYSYMBOL_assignment = 15,                /* assignment  */
-  YYSYMBOL_expression = 16                 /* expression  */
+  YYSYMBOL_print = 5,                      /* print  */
+  YYSYMBOL_6_ = 6,                         /* '='  */
+  YYSYMBOL_7_ = 7,                         /* '+'  */
+  YYSYMBOL_8_ = 8,                         /* '-'  */
+  YYSYMBOL_9_ = 9,                         /* '*'  */
+  YYSYMBOL_10_ = 10,                       /* '/'  */
+  YYSYMBOL_11_ = 11,                       /* ':'  */
+  YYSYMBOL_YYACCEPT = 12,                  /* $accept  */
+  YYSYMBOL_program = 13,                   /* program  */
+  YYSYMBOL_statement_list = 14,            /* statement_list  */
+  YYSYMBOL_statement = 15,                 /* statement  */
+  YYSYMBOL_assignment = 16,                /* assignment  */
+  YYSYMBOL_expression = 17                 /* expression  */
 };
 typedef enum yysymbol_kind_t yysymbol_kind_t;
 
@@ -500,7 +502,7 @@ union yyalloc
 #define YYLAST   23
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  11
+#define YYNTOKENS  12
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  6
 /* YYNRULES -- Number of rules.  */
@@ -509,7 +511,7 @@ union yyalloc
 #define YYNSTATES  23
 
 /* YYMAXUTOK -- Last valid token kind.  */
-#define YYMAXUTOK   259
+#define YYMAXUTOK   260
 
 
 /* YYTRANSLATE(TOKEN-NUM) -- Symbol number corresponding to TOKEN-NUM
@@ -527,9 +529,9 @@ static const yytype_int8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     8,     6,     2,     7,     2,     9,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,    10,     2,
-       2,     5,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     9,     7,     2,     8,     2,    10,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,    11,     2,
+       2,     6,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
@@ -548,15 +550,16 @@ static const yytype_int8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     1,     2,     3,     4
+       2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
+       5
 };
 
 #if YYDEBUG
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    23,    23,    26,    27,    30,    31,    34,    42,    43,
-      44,    45,    46,    47
+       0,    26,    26,    29,    30,    33,    34,    37,    46,    47,
+      48,    49,    50,    51
 };
 #endif
 
@@ -572,8 +575,8 @@ static const char *yysymbol_name (yysymbol_kind_t yysymbol) YY_ATTRIBUTE_UNUSED;
    First, the terminals, then, starting at YYNTOKENS, nonterminals.  */
 static const char *const yytname[] =
 {
-  "\"end of file\"", "error", "\"invalid token\"", "NUMBER", "ID", "'='",
-  "'+'", "'-'", "'*'", "'/'", "':'", "$accept", "program",
+  "\"end of file\"", "error", "\"invalid token\"", "NUMBER", "ID",
+  "print", "'='", "'+'", "'-'", "'*'", "'/'", "':'", "$accept", "program",
   "statement_list", "statement", "assignment", "expression", YY_NULLPTR
 };
 
@@ -598,8 +601,8 @@ yysymbol_name (yysymbol_kind_t yysymbol)
    STATE-NUM.  */
 static const yytype_int8 yypact[] =
 {
-      -2,    -9,    16,    22,    -2,    -9,    -9,     1,    14,    -9,
-      -9,    14,    14,    14,    14,    -9,    -9,     6,    11,    11,
+      -2,    -9,    15,    22,    -2,    -9,    -9,     0,    14,    -9,
+      -9,    14,    14,    14,    14,    -9,    -9,     5,    10,    10,
       -9,    -9,    -9
 };
 
@@ -637,25 +640,25 @@ static const yytype_int8 yytable[] =
 
 static const yytype_int8 yycheck[] =
 {
-       8,     3,     4,    11,    12,    13,    14,     6,     7,     8,
-       9,    10,     6,     7,     8,     9,    10,     3,     4,     8,
-       9,     5,     0,     4
+       8,     3,     4,    11,    12,    13,    14,     7,     8,     9,
+      10,    11,     7,     8,     9,    10,    11,     3,     4,     9,
+      10,     6,     0,     4
 };
 
 /* YYSTOS[STATE-NUM] -- The symbol kind of the accessing symbol of
    state STATE-NUM.  */
 static const yytype_int8 yystos[] =
 {
-       0,     3,     4,    12,    13,    14,    15,    16,     5,     0,
-      14,     6,     7,     8,     9,    10,     4,    16,    16,    16,
-      16,    16,    10
+       0,     3,     4,    13,    14,    15,    16,    17,     6,     0,
+      15,     7,     8,     9,    10,    11,     4,    17,    17,    17,
+      17,    17,    11
 };
 
 /* YYR1[RULE-NUM] -- Symbol kind of the left-hand side of rule RULE-NUM.  */
 static const yytype_int8 yyr1[] =
 {
-       0,    11,    12,    13,    13,    14,    14,    15,    16,    16,
-      16,    16,    16,    16
+       0,    12,    13,    14,    14,    15,    15,    16,    17,    17,
+      17,    17,    17,    17
 };
 
 /* YYR2[RULE-NUM] -- Number of symbols on the right-hand side of rule RULE-NUM.  */
@@ -1126,59 +1129,67 @@ yyreduce:
   switch (yyn)
     {
   case 6: /* statement: expression ':'  */
-#line 31 "simple_language.y"
+#line 34 "simple_language.y"
                               { std::cout << (yyvsp[-1].num) << std::endl; }
-#line 1132 "y.tab.c"
+#line 1135 "y.tab.c"
     break;
 
   case 7: /* assignment: ID '=' expression ':'  */
-#line 35 "simple_language.y"
+#line 38 "simple_language.y"
     { 
         printf("Assign %s = %d\n", (yyvsp[-3].str)->c_str(), (yyvsp[-1].num)); 
         (yyval.num) = vars[*(yyvsp[-3].str)] = (yyvsp[-1].num); 
         delete (yyvsp[-3].str);
     }
-#line 1142 "y.tab.c"
+#line 1145 "y.tab.c"
     break;
 
   case 8: /* expression: NUMBER  */
-#line 42 "simple_language.y"
-                                    { (yyval.num) = (yyvsp[0].num); }
-#line 1148 "y.tab.c"
+#line 46 "simple_language.y"
+                            { printf("NUM(%d)\n", (yyvsp[0].num)); (yyval.num) = (yyvsp[0].num); }
+#line 1151 "y.tab.c"
     break;
 
   case 9: /* expression: ID  */
-#line 43 "simple_language.y"
-                                    { (yyval.num) = vars[*(yyvsp[0].str)];      delete (yyvsp[0].str); }
-#line 1154 "y.tab.c"
+#line 47 "simple_language.y"
+                            { (yyval.num) = vars[*(yyvsp[0].str)]; printf("VAR(%s = %d)\n", (yyvsp[0].str)->c_str(), (yyval.num)); delete (yyvsp[0].str); }
+#line 1157 "y.tab.c"
     break;
 
   case 10: /* expression: expression '+' expression  */
-#line 44 "simple_language.y"
-                                    { (yyval.num) = (yyvsp[-2].num) + (yyvsp[0].num); }
-#line 1160 "y.tab.c"
+#line 48 "simple_language.y"
+                                 { printf("(+ %d %d)\n", (yyvsp[-2].num), (yyvsp[0].num)); (yyval.num) = (yyvsp[-2].num) + (yyvsp[0].num); }
+#line 1163 "y.tab.c"
     break;
 
   case 11: /* expression: expression '-' expression  */
-#line 45 "simple_language.y"
-                                    { (yyval.num) = (yyvsp[-2].num) - (yyvsp[0].num); }
-#line 1166 "y.tab.c"
+#line 49 "simple_language.y"
+                                 { printf("(- %d %d)\n", (yyvsp[-2].num), (yyvsp[0].num)); (yyval.num) = (yyvsp[-2].num) - (yyvsp[0].num); }
+#line 1169 "y.tab.c"
     break;
 
   case 12: /* expression: expression '*' expression  */
-#line 46 "simple_language.y"
-                                    { (yyval.num) = (yyvsp[-2].num) * (yyvsp[0].num); }
-#line 1172 "y.tab.c"
+#line 50 "simple_language.y"
+                                 { printf("(* %d %d)\n", (yyvsp[-2].num), (yyvsp[0].num)); (yyval.num) = (yyvsp[-2].num) * (yyvsp[0].num); }
+#line 1175 "y.tab.c"
     break;
 
   case 13: /* expression: expression '/' expression  */
-#line 47 "simple_language.y"
-                                    { (yyval.num) = (yyvsp[-2].num) / (yyvsp[0].num); }
-#line 1178 "y.tab.c"
+#line 51 "simple_language.y"
+                                 { 
+        if ((yyvsp[0].num) == 0) {
+            yyerror("Error: División por cero");
+            (yyval.num) = 0;
+        } else {
+            printf("(/ %d %d)\n", (yyvsp[-2].num), (yyvsp[0].num));
+            (yyval.num) = (yyvsp[-2].num) / (yyvsp[0].num);
+        }
+    }
+#line 1189 "y.tab.c"
     break;
 
 
-#line 1182 "y.tab.c"
+#line 1193 "y.tab.c"
 
       default: break;
     }
@@ -1371,7 +1382,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 50 "simple_language.y"
+#line 61 "simple_language.y"
 
 
 int main() {
