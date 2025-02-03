@@ -93,4 +93,4 @@ Esto permite interpretar y validar expresiones correctamente.
 
 ### Explicación
 
-[Enlace a explicativo en YouTube](https://youtu.be/Z8z-ykfaNjg)
+[Enlace a explicativo en YouTube](https://youtu.be/4qcCxBGBVBU)
